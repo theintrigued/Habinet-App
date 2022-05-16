@@ -6,7 +6,6 @@ import javax.swing.ImageIcon;
 
 /**
  * A message from user for a groupChat
- * @author Maher Athar Ilyas 
  * @version 
 */
 public class Message implements Notification
