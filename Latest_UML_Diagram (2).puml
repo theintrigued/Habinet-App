@@ -1,0 +1,213 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+
+User <-- Member
+User ..> Saveable
+User o-- Group
+Member --o Group
+Group o-- Leaderboard
+Group ..> Saveable
+Leaderboard ..> Saveable
+Message --o GroupChat
+GroupChat --o Group
+Message ..> DateAndTime
+Task ..> DateAndTime
+Leaderboard ..> DateAndTime
+Task <-- TaskVerifiable
+Task ..> Notification
+User ..> Notification
+Message ..> Notification
+Leaderboard ..> Notification
+Group ..> Notification
+Member ..> Scoreable
+Task ..> Scoreable
+User ..> Scoreable
+Member --o Leaderboard
+
+
+
+
+
+class User{
+- username : String
+- password : String
+- email : String
+- level : int
+- xp : int
+- streak : int
+- streakFreezeCount : int
+- badges : ArrayList<String>
+- groups : ArrayList<Group>
+- profileID : int
+- taskList : ArrayList<Task>
+- mode: String
+- notifEnable : boolean
+
+- void setPassword(String)
+- String getPassword()
++ void setUsername(String)
++ String getUsername()
++ String getEmail()
++ void setEmail()
++ void incStreakFreeze()
++ void incStreak()
++ void addGroup()
++ void leaveGroup()
++ void addBadge(String)
++ String[] getBadges()
+- void updateLevel()  /'called in increaseXP after updating XP '/
++ String getProfileID()
++ void addTask(Task)
++ void removeTask(Task)
++ void completeTask(Task)
++ void changeNotif(boolean)
+}
+
+interface Saveable{
++ saveData(Object) void
+}
+
+interface Notification{
++ void notify()
+}
+
+
+interface Scoreable{
+
++ void setScore(int)
+- int getScore()
++ void resetScore()
+}
+
+
+interface DateAndTime{
++ void getDate(Date)
++ void getTime(Time)
+}
+
+class Message{
+- text : String
+- image : ImageIcon
+- sender : User
+- sendTime : Time
+- sendDate : Date
+- taggedUser : User
+
++ void sendMessage(String)
++ void sendMessage(ImageIcon)
++ void setSender(User)
+- User getTaggedUser(String) /' call in sendMessage(s) '/
+
+}
+
+
+
+
+class Task{
+- title : String
+- priority : String
+- startDate : Date
+- dueDate : Date
+- Status : String
+- category : String
+- needsVerif : boolean
+- xp : int
+
++void setTitle(String)
++String getTitle()
++boolean getStatus()
++void setStatus(boolean)
++void setCategory(String)
++String getCategory()
++void groupCheck(Group[])
++void setPriority(String)
++String getPriority()
+
+}
+
+
+
+class TaskVerifiable
+{
+    upVote : int
+    downVote : int
+    status : boolean
+    imageVerify : ImageIcon
+    descriptverify : String
+
+    void incUp()
+    int getUp()
+    void incDown()
+    int getDown()
+    boolean getStatus()
+    void setStatus(boolean)
+    void setImage(ImageIcon)
+    void setDescript(String)
+}
+
+class Leaderboard{
+- topScorer : Member
+- startDate : Date
+- startTime : Time
+- members : ArrayList<Member>
+
++ User getTopScorer()
++ User[] getMembers()
+- void sortLeaderBoard()
++ void addMember(User)
++ void removeMember(User)
++ void resetScore()
++ void resetDate()
+}
+
+
+
+
+class Member{
+    -score : int
+
+    + int getScore()
+    + void incScore(int)
+    + void resetScore()
+}
+
+
+class Group{
+    - members : ArrayList<Member>
+    - topScorer : Member
+    - admin : Member
+    - leaderBoard : Leaderboard
+    - chat : GroupChat
+    - name : String
+    - groupID : int
+    - groupImage : ImageIcon
+    - categories : ArrayList<String>
+
+    + User getTopScorer()
+    + boolean addUser(User)
+    + void removeUser(User)
+    + int getGroupID()
+    + String getGroupName()
+    + boolean isAdmin(User)
+    + void setGroupImage(ImageIcon)
+    + void addCategory(String)
+    + void removeCategory(String)
+    + void resetScores()
+
+}
+
+
+class GroupChat
+{
+     messages : ArrayList<Message>
+
+     + void addMessage(Message)
+     + ArrayList<Message> getMessages()
+
+}
+
+
+@enduml
