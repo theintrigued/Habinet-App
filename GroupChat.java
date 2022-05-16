@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * GroupChat Object
- * @author Maher Athar Ilyas
  * @version 
 */
 public class GroupChat
