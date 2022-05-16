@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 /**
  * LeaderBoard for group
- * @author Maher Athar Ilyas 
  * @version 
 */
 public class LeaderBoard  
