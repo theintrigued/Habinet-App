@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 /**
  * User class
- * @author Amirreza KHoshbakht 22001198
  * @version 04.23.2021
  */
 public class User {
