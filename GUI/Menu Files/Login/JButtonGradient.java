@@ -6,7 +6,6 @@ import java.awt.Graphics2D;
 
 import javax.swing.JButton;
 /**
- * @author Maher Athar Ilyas
  */
 
 
