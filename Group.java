@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * a class representing a group of members(users) and related functions
- * @author Arshia Bakhshayesh
  * @version 12/04/2021
  */
 public class Group
