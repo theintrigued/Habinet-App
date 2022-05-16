@@ -1,6 +1,5 @@
 /**
 * For Classes that have score or XP
-* @author Maher Athar Ilyas 
 * @version 
 */
 public interface Scoreable {
