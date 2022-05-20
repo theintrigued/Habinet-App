@@ -3,7 +3,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * a class representing a group of members(users) and related functions
+ * a  class representing a group of members(users) and related functions
  * @version 12/04/2021
  */
 public class Group
